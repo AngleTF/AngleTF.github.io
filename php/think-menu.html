@@ -282,6 +282,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.10" data-path="route.html">
+            
+                <a href="route.html">
+            
+                    
+                    Route原理
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1070,7 +1083,297 @@
 </ol>
 <h3 id="&#x5165;&#x53E3;&#x6587;&#x4EF6;">&#x5165;&#x53E3;&#x6587;&#x4EF6;</h3>
 <pre><code>&#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;/public/index.php/modelName/controllerName/actionName
-</code></pre><h3 id="&#x63A7;&#x5236;&#x5668;">&#x63A7;&#x5236;&#x5668;</h3>
+</code></pre><h3 id="&#x89C6;&#x56FE;">&#x89C6;&#x56FE;</h3>
+<p>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x52A9;&#x624B;&#x51FD;&#x6570; view &#x6216;&#x8005; &#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5; fetch,</p>
+<p>fetch</p>
+<pre><code class="lang-php"><span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;fetch(<span class="hljs-string">&apos;admin@member/edit&apos;</span>,[<span class="hljs-string">&apos;think&apos;</span> =&gt; <span class="hljs-string">&apos;php&apos;</span>]);
+</code></pre>
+<p>view&#x52A9;&#x624B;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">return</span> view(<span class="hljs-string">&apos;admin@member/edit&apos;</span>,[<span class="hljs-string">&apos;think&apos;</span> =&gt; <span class="hljs-string">&apos;php&apos;</span>])
+</code></pre>
+<p>&#x4E0D;&#x5E26;&#x4EFB;&#x4F55;&#x53C2;&#x6570; &#x81EA;&#x52A8;&#x5B9A;&#x4F4D;&#x5F53;&#x524D;&#x6A21;&#x5757; <strong>view/&#x7C7B;&#x540D;/&#x64CD;&#x4F5C;.html</strong> &#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;, &#x4EE5;&#x4E0A;&#x6A21;&#x677F;&#x8DEF;&#x5F84;&#x662F; <strong> admin/view/member/edit.html </strong>, &#x5E76;&#x4E14;&#x5C06;&#x6A21;&#x677F;&#x5BF9;&#x5E94;&#x7684;think&#x53D8;&#x91CF;&#x66FF;&#x6362;&#x6210;php</p>
+<h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
+<p>&#x5B9E;&#x4F8B;&#x5316;&#x6A21;&#x578B;&#x4E4B;&#x524D;&#x5148;&#x8981;&#x5C06; <strong> &#x8D26;&#x6237;/&#x5BC6;&#x7801;/&#x5E93;&#x540D; </strong> &#x586B;&#x5165;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x7684; database.php &#x6587;&#x4EF6;</p>
+<p>&#x5B9E;&#x4F8B;&#x5316;&#x6A21;&#x578B;&#x8C03;&#x7528;</p>
+<pre><code class="lang-php">$p = <span class="hljs-keyword">new</span> Person();
+$p-&gt;getUserInfo();
+</code></pre>
+<p>&#x9759;&#x6001;&#x65B9;&#x5F0F;&#x8C03;&#x7528;</p>
+<pre><code class="lang-php">Person::getUserInfo();
+</code></pre>
+<p>&#x52A9;&#x624B;&#x51FD;&#x6570;&#x8C03;&#x7528;</p>
+<pre><code class="lang-php">model(<span class="hljs-string">&apos;Person&apos;</span>)-&gt;getUserInfo();
+</code></pre>
+<h3 id="&#x914D;&#x7F6E;">&#x914D;&#x7F6E;</h3>
+<p><strong>&#x6A21;&#x5757;&#x4F18;&#x5148;&#x7EA7;</strong><br><code>&#x60EF;&#x4F8B;&#x914D;&#x7F6E;-&gt;&#x5E94;&#x7528;&#x914D;&#x7F6E;-&gt;&#x6A21;&#x5757;&#x914D;&#x7F6E;-&gt;&#x52A8;&#x6001;&#x914D;&#x7F6E;</code></p>
+<p><strong>&#x60EF;&#x4F8B;&#x914D;&#x7F6E;</strong><br>&#x6846;&#x67B6;&#x6838;&#x5FC3;&#x914D;&#x7F6E;, &#x65E0;&#x9700;&#x66F4;&#x6539;, &#x4F4D;&#x4E8E; thinkphp/convention.php</p>
+<p><strong>&#x5E94;&#x7528;&#x914D;&#x7F6E;</strong><br>&#x5E94;&#x7528;&#x521D;&#x59CB;&#x5316;&#x7684;&#x65F6;&#x5019;&#x9996;&#x5148;&#x52A0;&#x8F7D;&#x7684;&#x516C;&#x5171;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#xFF0C;&#x9ED8;&#x8BA4;&#x4F4D;&#x4E8E;application/config.php(5.0), 5.01 &#x7248;&#x672C;&#x4F4D;&#x4E8E; config &#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x914D;&#x7F6E;&#x6587;&#x4EF6;</p>
+<p><strong>&#x6A21;&#x5757;&#x914D;&#x7F6E;</strong><br>&#x6BCF;&#x4E2A;&#x6A21;&#x5757;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x8F7D;&#x81EA;&#x5DF1;&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4F4D;&#x4E8E; application/&#x5F53;&#x524D;&#x6A21;&#x5757;&#x540D;/config/*.php</p>
+<p><strong>&#x52A8;&#x6001;&#x914D;&#x7F6E;</strong><br>&#x901A;&#x8FC7;&#x63A7;&#x5236;&#x5668;&#x8BBE;&#x7F6E;&#x914D;&#x7F6E;&#x65F6;&#x52A8;&#x6001;&#x7684;&#x914D;&#x7F6E;</p>
+<p><strong>&#x914D;&#x7F6E;&#x6587;&#x4EF6;</strong></p>
+<table>
+<thead>
+<tr>
+<th>&#x6587;&#x4EF6;&#x540D;</th>
+<th>&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>app.php</td>
+<td>&#x5E94;&#x7528;&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>cache.php</td>
+<td>&#x7F13;&#x5B58;&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>cookie.php</td>
+<td>cookie&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>database.php</td>
+<td>&#x6570;&#x636E;&#x5E93;&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>log.php</td>
+<td>&#x65E5;&#x5FD7;&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>session.php</td>
+<td>session&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>template.php</td>
+<td>&#x6A21;&#x677F;&#x5F15;&#x64CE;&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>trace.php</td>
+<td>&#x9875;&#x9762;trace&#x914D;&#x7F6E;</td>
+</tr>
+<tr>
+<td>paginate.php</td>
+<td>&#x5206;&#x9875;&#x914D;&#x7F6E;</td>
+</tr>
+</tbody>
+</table>
+<p><strong>&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;</strong><br>&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x5E94;&#x7528;&#x6839;&#x76EE;&#x5F55;&#x4E0B;&#x9762;&#x7684;.env&#x6765;&#x6A21;&#x62DF;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x914D;&#x7F6E;&#xFF0C;.env&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x914D;&#x7F6E;&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x683C;&#x5F0F;&#x91C7;&#x7528;ini&#x65B9;&#x5F0F;, &#x4F8B;&#x5982;:</p>
+<pre><code class="lang-ini"><span class="hljs-section">[database]</span>
+<span class="hljs-attr">username</span> = <span class="hljs-number">123</span>
+<span class="hljs-attr">password</span> = <span class="hljs-number">456</span>
+</code></pre>
+<p><strong>&#x8BFB;&#x53D6;.env&#x7684;&#x914D;&#x7F6E;</strong></p>
+<pre><code class="lang-php">Env::get(<span class="hljs-string">&apos;database.username&apos;</span>, <span class="hljs-string">&apos;default_username&apos;</span>);
+</code></pre>
+<p>(.)&#x7684;&#x76EE;&#x7684;&#x662F;&#x83B7;&#x53D6;&#x4E8C;&#x7EA7;&#x914D;&#x7F6E;, &#x4E5F;&#x5C31;&#x662F;&#x83B7;&#x53D6; database &#x9879;&#x7684;username, &#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x9ED8;&#x8BA4;&#x503C;</p>
+<p><strong>&#x83B7;&#x53D6;&#x914D;&#x7F6E;&#x4FE1;&#x606F;</strong></p>
+<pre><code class="lang-php">Config::get(<span class="hljs-string">&apos;&#x53C2;&#x6570;&#x540D;&apos;</span>);
+
+<span class="hljs-comment">//&#x6216;&#x8005;&#x4F7F;&#x7528;&#x52A9;&#x624B;&#x51FD;&#x6570;</span>
+ config(<span class="hljs-string">&apos;&#x53C2;&#x6570;&#x540D;&apos;</span>)
+</code></pre>
+<p><strong>&#x83B7;&#x53D6;&#x6240;&#x6709;&#x53C2;&#x6570;</strong></p>
+<pre><code class="lang-php">Config::get();
+
+<span class="hljs-comment">//&#x6216;&#x8005;</span>
+ config();
+</code></pre>
+<p><strong>&#x5224;&#x65AD;&#x53C2;&#x6570;&#x662F;&#x5426;&#x5B58;&#x5728;</strong></p>
+<pre><code class="lang-php">Config::has(<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;2&apos;</span>);
+
+<span class="hljs-comment">// &#x6216;&#x8005; </span>
+config(<span class="hljs-string">&apos;?&#x914D;&#x7F6E;&#x53C2;&#x6570;2&apos;</span>);
+</code></pre>
+<p><strong>&#x8BBE;&#x7F6E;&#x53C2;&#x6570;</strong></p>
+<pre><code class="lang-php">Config::set(<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;&apos;</span>,<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>);
+
+<span class="hljs-comment">// &#x6216;&#x8005;&#x4F7F;&#x7528;&#x52A9;&#x624B;&#x51FD;&#x6570;</span>
+config(<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;&apos;</span>,<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>);
+</code></pre>
+<p><strong>&#x8BBE;&#x7F6E;&#x591A;&#x4E2A;&#x53C2;&#x6570;</strong></p>
+<pre><code class="lang-php">Config::set([
+    <span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;1&apos;</span>=&gt;<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>,
+    <span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;2&apos;</span>=&gt;<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>
+]);
+
+<span class="hljs-comment">// &#x6216;&#x8005;&#x4F7F;&#x7528;&#x52A9;&#x624B;&#x51FD;&#x6570;</span>
+config([
+    <span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;1&apos;</span>=&gt;<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>,
+    <span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x53C2;&#x6570;2&apos;</span>=&gt;<span class="hljs-string">&apos;&#x914D;&#x7F6E;&#x503C;&apos;</span>
+]);
+</code></pre>
+<h3 id="&#x8DEF;&#x7531;">&#x8DEF;&#x7531;</h3>
+<p><strong>&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x6587;&#x4EF6;</strong></p>
+<pre><code>&#x251C;&#x2500;route                 &#x8DEF;&#x7531;&#x5B9A;&#x4E49;&#x76EE;&#x5F55;
+&#x2502;  &#x251C;&#x2500;route.php          &#x8DEF;&#x7531;&#x5B9A;&#x4E49;
+&#x2502;  &#x251C;&#x2500;api.php            &#x8DEF;&#x7531;&#x5B9A;&#x4E49;
+&#x2502;  &#x2514;&#x2500;...                &#x66F4;&#x591A;&#x8DEF;&#x7531;&#x5B9A;&#x4E49;
+</code></pre><p>&#x901A;&#x8FC7;&#x4FEE;&#x6539;&#x8DEF;&#x7531;&#x6587;&#x4EF6;&#x6765;&#x6CE8;&#x518C;&#x76F8;&#x5E94;&#x7684;&#x89C4;&#x5219;</p>
+<p><strong>&#x6CE8;&#x518C;&#x8DEF;&#x7531;&#x89C4;&#x5219;</strong></p>
+<pre><code class="lang-php">Route::rule(<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x8868;&#x8FBE;&#x5F0F;&apos;</span>,<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x5730;&#x5740;&apos;</span>,<span class="hljs-string">&apos;&#x8BF7;&#x6C42;&#x7C7B;&#x578B;&apos;</span>,<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x53C2;&#x6570;&apos;</span>,<span class="hljs-string">&apos;&#x53D8;&#x91CF;&#x89C4;&#x5219;&apos;</span>);
+</code></pre>
+<p><strong>&#x6570;&#x7EC4;&#x5F62;&#x5F0F;&#x6CE8;&#x518C;&#x8DEF;&#x7531;</strong></p>
+<pre><code class="lang-php"><span class="hljs-keyword">return</span> [
+    <span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x89C4;&#x5219;&apos;</span> =&gt; [<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x5730;&#x5740;&apos;</span>, [<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x9009;&#x9879;&apos;</span>], [<span class="hljs-string">&apos;&#x53D8;&#x91CF;&#x89C4;&#x5219;&apos;</span>]]
+]
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x89C4;&#x5219;</strong></p>
+<pre><code>&#x8DEF;&#x7531;&#x6807;&#x8BC6;&#x7B26;/:&#x53D8;&#x91CF;&#x540D;1/:&#x53D8;&#x91CF;&#x540D;2/[:&#x53EF;&#x9009;&#x53D8;&#x91CF;&#x540D;1]
+</code></pre><p><strong>&#x8DEF;&#x7531;&#x5730;&#x5740;</strong><br>&#x901A;&#x8FC7;&#x5339;&#x914D;&#x76F8;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x89C4;&#x5219;, &#x6620;&#x5C04;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x8DEF;&#x7531;&#x5730;&#x5740;<br><img src="../assets/thinkphp-rule-1.png" alt=""></p>
+<p><strong>&#x8DEF;&#x7531;&#x9009;&#x9879;</strong><br>Route::rule&#x65B9;&#x6CD5;&#x7684;&#x7B2C;&#x4E09;&#x4E2A;&#x53C2;&#x6570;, &#x6709;&#x4EE5;&#x4E0B;&#x9009;&#x9879;<br><img src="../assets/thinkphp-rule.png" alt=""></p>
+<p><strong>&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x6548;&#x9A8C;</strong><br>&#x4E0A;&#x9762;&#x4F8B;&#x5B50;&#x4E2D; [&apos;id&apos; =&gt; &apos;\d+&apos;], &#x5219;&#x662F;&#x5BF9;&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x7684;&#x6B63;&#x5219;&#x9A8C;&#x8BC1;</p>
+<p><strong>&#x4F8B;&#x5B50;</strong></p>
+<pre><code class="lang-php"><span class="hljs-comment">// &#x6CE8;&#x518C;&#x8DEF;&#x7531;&#x5230;index&#x6A21;&#x5757;&#x7684;News&#x63A7;&#x5236;&#x5668;&#x7684;read&#x64CD;&#x4F5C;</span>
+Route::rule(<span class="hljs-string">&apos;new/:id&apos;</span>,<span class="hljs-string">&apos;index/News/read&apos;</span>, [<span class="hljs-string">&apos;ext&apos;</span> =&gt; <span class="hljs-string">&apos;html&apos;</span>],[<span class="hljs-string">&apos;id&apos;</span> =&gt; <span class="hljs-string">&apos;\d+&apos;</span>]);
+</code></pre>
+<p>&#x901A;&#x8FC7;&#x8BBF;&#x95EE; <code>http://serverName/new/5.html</code>, &#x4F1A;&#x5C06;&#x5176;&#x6620;&#x5C04;&#x5230;<code>http://serverName/index/news/read/id/5</code> &#x5E76;&#x4E14;&#x539F;&#x6765;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x4F1A;&#x81EA;&#x52A8;&#x5931;&#x6548;&#x3002;</p>
+<p><strong>&#x5F3A;&#x5236;&#x8DEF;&#x7531;</strong></p>
+<pre><code>url_route_must &#x5F00;&#x542F;&#x540E;&#x65E0;&#x6CD5;&#x4F7F;&#x7528;pathinfo&#x6A21;&#x5F0F;&#x8BBF;&#x95EE;, &#x53EA;&#x80FD;&#x901A;&#x8FC7;&#x8DEF;&#x7531;&#x89C4;&#x5219;&#x8BBF;&#x95EE;
+</code></pre><p><strong>&#x8DEF;&#x7531;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x65B9;&#x5F0F;</strong></p>
+<p>&#x5047;&#x5982;&#x8DEF;&#x7531;&#x4E3A;</p>
+<pre><code class="lang-php">Route::get(<span class="hljs-string">&apos;getUserInfo/:name/:age&apos;</span>, <span class="hljs-string">&apos;index/test/index&apos;</span>);
+</code></pre>
+<p><code>url_param_type</code> &#x4E3A; 0, &#x5219;&#x6210;&#x5BF9;&#x89E3;&#x6790;<br><a href="http://serverName/getUserInfo/name/tao/age/22" target="_blank">http://serverName/getUserInfo/name/tao/age/22</a><br>getUserInfo&#x662F;&#x8DEF;&#x7531;&#x7684;&#x6620;&#x5C04;, &#x800C; name/tao/age/22 &#x662F;&#x53C2;&#x6570;&#x540D;&#x548C;&#x53C2;&#x6570;&#x503C;, &#x4EE5; key/value &#x5F62;&#x5F0F;&#x5C55;&#x73B0;</p>
+<p><code>url_param_type</code> &#x4E3A;1, &#x5219;&#x987A;&#x5E8F;&#x89E3;&#x6790;<br><a href="http://serverName/getUserInfo/tao/22" target="_blank">http://serverName/getUserInfo/tao/22</a></p>
+<p>&#x6253;&#x5370;</p>
+<pre><code class="lang-php">dump(Request::param());
+</code></pre>
+<pre><code>array (size=2)
+  &apos;name&apos; =&gt; string &apos;name&apos; (length=4)
+  &apos;age&apos; =&gt; string &apos;22&apos; (length=2)
+</code></pre><p><strong>&#x53D8;&#x91CF;&#x6620;&#x5C04;</strong></p>
+<pre><code class="lang-php"><span class="hljs-comment">//&#x5C06;&#x8DEF;&#x7531;&#x5339;&#x914D;&#x5230;&#x7684;version&#x7684;&#x503C;&#x6620;&#x5C04;&#x5230;&#x8DF3;&#x8F6C;&#x5730;&#x5740;&#x4E2D;</span>
+Route::rule(<span class="hljs-string">&apos;api/:version&apos;</span>,<span class="hljs-string">&apos;index/:version/index&apos;</span>);
+</code></pre>
+<p><strong>&#x53D8;&#x91CF;&#x7684;&#x5168;&#x5C40;&#x89C4;&#x5219;&#x5B9A;&#x4E49;</strong></p>
+<pre><code class="lang-php">Route::pattern([
+    <span class="hljs-string">&apos;age&apos;</span> =&gt; <span class="hljs-string">&apos;\d+&apos;</span>
+]);
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x8C03;&#x7528;&#x63A7;&#x5236;&#x5668;&#x65B9;&#x6CD5;</strong></p>
+<pre><code class="lang-php">Reute::rule(<span class="hljs-string">&apos;demo&apos;</span>, <span class="hljs-string">&apos;[@&#x6A21;&#x5757;&#x540D;][/&#x63A7;&#x5236;&#x5668;][/&#x65B9;&#x6CD5;]&apos;</span>)
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x8C03;&#x7528;&#x7C7B;&#x65B9;&#x6CD5;</strong></p>
+<pre><code class="lang-php">Reute::rule(<span class="hljs-string">&apos;demo&apos;</span>, <span class="hljs-string">&apos;&#x547D;&#x540D;&#x7A7A;&#x95F4;@&#x65B9;&#x6CD5;&apos;</span>)
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x8C03;&#x7528;&#x56DE;&#x8C03;&#x51FD;&#x6570;(&#x5C0F;&#x578B;&#x65B9;&#x6CD5;)</strong></p>
+<pre><code class="lang-php">Reute::rule(<span class="hljs-string">&apos;demo&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;demo&apos;</span>
+})
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x5206;&#x7EC4;</strong></p>
+<p>&#x683C;&#x5F0F;</p>
+<pre><code class="lang-php">Route::group(<span class="hljs-string">&apos;&#x5206;&#x7EC4;&#x540D;&#x6216;&#x8005;&#x5206;&#x7EC4;&#x53C2;&#x6570;&apos;</span>,<span class="hljs-string">&apos;&#x5206;&#x7EC4;&#x8DEF;&#x7531;&#x89C4;&#x5219;&apos;</span>,[<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x9009;&#x9879;]&apos;</span>,[<span class="hljs-string">&apos;&#x53D8;&#x91CF;&#x89C4;&#x5219;&apos;</span>]);
+</code></pre>
+<p>&#x4F8B;&#x5B50;    </p>
+<pre><code class="lang-php"><span class="hljs-comment">//&#x6570;&#x7EC4;&#x76F4;&#x63A5;&#x5B9A;&#x4E49;&#x89C4;&#x5219;</span>
+Route::group(<span class="hljs-string">&apos;blog&apos;</span>, [
+    <span class="hljs-string">&apos;:id&apos;</span>   =&gt; <span class="hljs-string">&apos;Blog/read&apos;</span>,
+    <span class="hljs-string">&apos;:name&apos;</span> =&gt; <span class="hljs-string">&apos;Blog/read&apos;</span>,
+])-&gt;ext(<span class="hljs-string">&apos;html&apos;</span>)-&gt;pattern([<span class="hljs-string">&apos;id&apos;</span> =&gt; <span class="hljs-string">&apos;\d+&apos;</span>]);
+
+<span class="hljs-comment">//&#x95ED;&#x5305;&#x65B9;&#x5F0F;&#x5B9A;&#x4E49;&#x89C4;&#x5219;</span>
+Route::group(<span class="hljs-string">&apos;blog&apos;</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">()</span> </span>{
+    Route::rule(<span class="hljs-string">&apos;:id&apos;</span>, <span class="hljs-string">&apos;blog/read&apos;</span>);
+    Route::rule(<span class="hljs-string">&apos;:name&apos;</span>, <span class="hljs-string">&apos;blog/read&apos;</span>);
+})-&gt;ext(<span class="hljs-string">&apos;html&apos;</span>)-&gt;pattern([<span class="hljs-string">&apos;id&apos;</span> =&gt; <span class="hljs-string">&apos;\d+&apos;</span>, <span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;\w+&apos;</span>]);
+</code></pre>
+<p><strong>&#x8DEF;&#x7531;&#x522B;&#x540D;</strong>
+&#x683C;&#x5F0F;</p>
+<pre><code class="lang-php">Route::alias(<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x522B;&#x540D;&apos;</span>, <span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x5730;&#x5740;&apos;</span>, [<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x9009;&#x9879;&apos;</span>]);
+</code></pre>
+<p><strong>&#x793A;&#x4F8B;</strong></p>
+<pre><code class="lang-php">Route::alias(<span class="hljs-string">&apos;math&apos;</span>, <span class="hljs-string">&apos;index/index&apos;</span>);
+</code></pre>
+<p>index&#x63A7;&#x5236;&#x5668;,index&#x6A21;&#x5757;, add&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-php"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">add</span><span class="hljs-params">($n1 = <span class="hljs-number">0</span>, $n2 = <span class="hljs-number">0</span>)</span>
+</span>{
+    <span class="hljs-keyword">return</span> $n1 + $n2;
+}
+</code></pre>
+<p>&#x901A;&#x8FC7; <code>http://localhost/math/add/1/2</code> &#x8FDB;&#x884C;&#x8BBF;&#x95EE;</p>
+<p>&#x8DEF;&#x7531;&#x522B;&#x540D;&#x7684;&#x9ED1;&#x767D;&#x540D;&#x5355;</p>
+<pre><code class="lang-php">Route::alias(<span class="hljs-string">&apos;math&apos;</span>, <span class="hljs-string">&apos;index/index&apos;</span>, [
+    <span class="hljs-comment">//&#x5141;&#x8BB8;&#x7684;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-string">&apos;allow&apos;</span> =&gt; <span class="hljs-string">&apos;index,read&apos;</span>,
+
+    <span class="hljs-comment">//&#x7981;&#x6B62;&#x7684;&#x65B9;&#x6CD5;</span>
+    <span class="hljs-string">&apos;except&apos;</span> =&gt; <span class="hljs-string">&apos;edit,delete&apos;</span>
+]);
+</code></pre>
+<p><strong>miss&#x8DEF;&#x7531;</strong>
+&#x5F53;&#x8DEF;&#x7531;&#x6CA1;&#x6709;&#x5339;&#x914D;&#x540E;&#x6267;&#x884C;&#x7684;&#x8DEF;&#x7531;</p>
+<pre><code class="lang-php">Route::miss(<span class="hljs-string">&apos;&#x8DEF;&#x7531;&#x5730;&#x5740;&#x6216;&#x8005;&#x95ED;&#x5305;&apos;</span>)
+</code></pre>
+<h3 id="&#x63A7;&#x5236;&#x5668;">&#x63A7;&#x5236;&#x5668;</h3>
+<p>&#x5728;&#x7236;&#x7C7B;&#x63A7;&#x5236;&#x5668;&#x5F53;&#x4E2D;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x65B9;&#x6CD5;&#xFF0C;&#x4EE5;&#x53CA;&#x52A0;&#x8F7D;&#x4E86;&#x4E0D;&#x540C;&#x529F;&#x80FD;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7684;&#x4E1A;&#x52A1;&#x7C7B;&#xFF0C;&#x80FD;&#x591F;&#x4E00;&#x5B9A;&#x610F;&#x4E49;&#x7684;&#x8282;&#x7701;&#x5728;&#x5B50;&#x7C7B;&#x5F53;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x4E66;&#x5199;&#x91CF;</p>
+<p>&#x53EA;&#x6709;public&#x7684;&#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x5177;&#x6709;&#x8BBF;&#x95EE;&#x6743;&#x9650;</p>
+<p><strong>&#x63A7;&#x5236;&#x5668;&#x540D;&#x540E;&#x7F00;</strong>
+&#x4FEE;&#x6539; config/app.php &#x4E2D;&#x7684;, &#x5F00;&#x542F;&#x540E;&#x6587;&#x4EF6;&#x548C;&#x7C7B;&#x540D;&#x9700;&#x8981;&#x52A0;&#x540E;&#x7F00;Controller </p>
+<pre><code>&apos;controller_suffix&apos; =&gt; true
+</code></pre><p><strong>&#x591A;&#x5C42;&#x63A7;&#x5236;&#x5668;</strong></p>
+<pre><code>&#x251C;&#x2500;index                     index&#x6A21;&#x5757;
+&#x2502;  &#x251C;&#x2500;controller             
+|      &#x251C;&#x2500;service            &#x63A7;&#x5236;&#x5668;&#x7684;service&#x76EE;&#x5F55;
+|         &#x251C;&#x2500;IndexController service&#x76EE;&#x5F55;&#x4E0B;&#x7684;Index&#x63A7;&#x5236;&#x5668;
+</code></pre><p>&#x901A;&#x8FC7; <a href="http://www.tp51.com/index/service.index/dump" target="_blank">http://www.tp51.com/index/service.index/dump</a> &#x8FDB;&#x884C;&#x8BBF;&#x95EE;service&#x5C42;&#x7684;dump&#x65B9;&#x6CD5;, &#x4F7F;&#x7528; . &#x6765;&#x8BBF;&#x95EE;&#x591A;&#x5C42;&#x63A7;&#x5236;&#x5668;</p>
+<p>&#x5982;&#x679C;&#x60F3;&#x628A; . &#x8F6C;&#x6362;&#x6210; / &#x4F7F;&#x7528;, &#x90A3;&#x4E48;&#x53EA;&#x8981;&#x5C06;<code>&apos;controller_auto_search&apos; =&gt; true</code>&#x5373;&#x53EF;</p>
+<p><strong>&#x5206;&#x5C42;&#x63A7;&#x5236;&#x5668;</strong>
+&#x5206;&#x5C42;&#x63A7;&#x5236;&#x5668;&#x662F;url&#x65E0;&#x6CD5;&#x76F4;&#x63A5;&#x8BBF;&#x95EE;&#x5230;&#x7684;, &#x76F4;&#x63A5;&#x5728;&#x6A21;&#x5757;&#x4E0B;&#x5B9A;&#x4E49;&#x65B0;&#x7684;&#x63A7;&#x5236;&#x5668;&#x6587;&#x4EF6;&#x5939;, &#x5E76;&#x4E14;&#x521B;&#x5EFA;&#x65B0;&#x6587;&#x4EF6;, &#x7531;&#x4E8E;&#x9075;&#x5FAA;psr4&#x89C4;&#x8303; &#x53EF;&#x76F4;&#x63A5;&#x5229;&#x7528;&#x547D;&#x540D;&#x7A7A;&#x95F4;&#x5B9E;&#x4F8B;&#x5316;&#x7C7B;, &#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;controller&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x5B9E;&#x4F8B;&#x5316;</p>
+<pre><code class="lang-php">controller(<span class="hljs-string">&apos;Mail&apos;</span>, <span class="hljs-string">&apos;service&apos;</span>)
+</code></pre>
+<p>&#x5B9E;&#x4F8B;&#x5316; service&#x63A7;&#x5236;&#x5668;&#x4E0B;&#x7684;Mail&#x7C7B;</p>
+<p><strong>&#x7A7A;&#x64CD;&#x4F5C; / &#x7A7A;&#x63A7;&#x5236;&#x5668;</strong></p>
+<pre><code class="lang-php"><span class="hljs-comment">//&#x63A7;&#x5236;&#x5668;&#x5185;, &#x9519;&#x8BEF;&#x7684;&#x64CD;&#x4F5C;&#x540D;&#x8C03;&#x7528;&#x7684;&#x51FD;&#x6570;</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">_empty</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-string">&apos;&#x7A7A;&#x64CD;&#x4F5C;&apos;</span>;
+}
+</code></pre>
+<p>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;Error&#x7684;&#x63A7;&#x5236;&#x5668;, &#x5E76;&#x4E14;&#x5B9A;&#x4E49;index&#x65B9;&#x6CD5;, &#x8BBF;&#x95EE;&#x9519;&#x8BEF;&#x7684;&#x63A7;&#x5236;&#x5668;&#x5C31;&#x80FD;&#x8C03;&#x7528;&#x6B64;&#x65B9;&#x6CD5;</p>
+<pre><code class="lang-php"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Error</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">index</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&#x7A7A;&#x63A7;&#x5236;&#x5668;&quot;</span>;
+    }
+}
+</code></pre>
+<p><strong>&#x63A7;&#x5236;&#x5668;&#x524D;&#x7F6E;&#x64CD;&#x4F5C;</strong></p>
+<pre><code class="lang-php"><span class="hljs-keyword">protected</span> $beforeActionList = [
+    <span class="hljs-string">&apos;beforeActions&apos;</span>,        <span class="hljs-comment">//&#x6240;&#x6709;&#x65B9;&#x6CD5;&#x7684;&#x524D;&#x7F6E;&#x64CD;&#x4F5C;</span>
+    <span class="hljs-string">&apos;beforeActions&apos;</span> =&gt; [<span class="hljs-string">&apos;except&apos;</span> =&gt; <span class="hljs-string">&apos;index&apos;</span>],    <span class="hljs-comment">//&#x9664;&#x4E86;index&#x5916;&#x5176;&#x4ED6;&#x90FD;&#x80FD;&#x8C03;&#x7528;&#x7684;&#x524D;&#x7F6E;&#x64CD;&#x4F5C;</span>
+    <span class="hljs-string">&apos;beforeActions&apos;</span> =&gt; [<span class="hljs-string">&apos;only&apos;</span> =&gt; <span class="hljs-string">&apos;index&apos;</span>]        <span class="hljs-comment">//&#x53EA;&#x6709;index&#x65B9;&#x6CD5;&#x624D;&#x80FD;&#x8C03;&#x7528;&#x7684;&#x524D;&#x7F6E;&#x64CD;&#x4F5C;</span>
+];
+</code></pre>
+<p>&#x8986;&#x5199;&#x7236;&#x7C7B; beforeActionList  &#x5C5E;&#x6027;, &#x6570;&#x7EC4;<code>key</code>&#x662F;&#x8C03;&#x7528;&#x7684;&#x524D;&#x7F6E;&#x65B9;&#x6CD5;&#x540D;</p>
+<p><strong>&#x91CD;&#x5B9A;&#x5411; / &#x8DF3;&#x8F6C;</strong>
+&#x7CFB;&#x7EDF;&#x7684;\think\Controller&#x7C7B;&#x5185;&#x7F6E;&#x4E86;&#x4E24;&#x4E2A;&#x8DF3;&#x8F6C;&#x65B9;&#x6CD5;success&#x548C;error&#xFF0C;&#x7528;&#x4E8E;&#x9875;&#x9762;&#x8DF3;&#x8F6C;&#x63D0;&#x793A;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">$this</span>-&gt;success(<span class="hljs-string">&apos;&#x65B0;&#x589E;&#x6210;&#x529F;&apos;</span>, <span class="hljs-string">&apos;User/list&apos;</span>, [], <span class="hljs-number">3</span>, []);
+
+<span class="hljs-keyword">$this</span>-&gt;error(<span class="hljs-string">&apos;&#x65B0;&#x589E;&#x5931;&#x8D25;&apos;</span>, <span class="hljs-string">&apos;User/list&apos;</span>, [], <span class="hljs-number">3</span>, []);
+</code></pre>
+<p>&#x8DF3;&#x8F6C;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;</p>
+<pre><code>//&#x9ED8;&#x8BA4;&#x9519;&#x8BEF;&#x8DF3;&#x8F6C;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;
+&apos;dispatch_error_tmpl&apos; =&gt; &apos;public/error&apos;,
+//&#x9ED8;&#x8BA4;&#x6210;&#x529F;&#x8DF3;&#x8F6C;&#x5BF9;&#x5E94;&#x7684;&#x6A21;&#x677F;&#x6587;&#x4EF6;
+&apos;dispatch_success_tmpl&apos; =&gt; &apos;public/success&apos;,
+</code></pre><p>&#x91CD;&#x5B9A;&#x5411;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">$this</span>-&gt;redirect(<span class="hljs-string">&apos;&#x6A21;&#x5757;/&#x63A7;&#x5236;&#x5668;/&#x64CD;&#x4F5C;&apos;</span>, [<span class="hljs-string">&apos;&#x53C2;&#x6570;&apos;</span>], <span class="hljs-string">&apos;httpcode&apos;</span>, [<span class="hljs-string">&apos;session data&apos;</span>]);
+</code></pre>
+<p>&#x52A9;&#x624B;&#x51FD;&#x6570;&#x652F;&#x6301;&#x8DF3;&#x8F6C;&#x524D;&#x8BB0;&#x4F4F;&#x5F53;&#x524D;url</p>
+<pre><code class="lang-php">redirect(<span class="hljs-string">&apos;News/category&apos;</span>)-&gt;remember();
+</code></pre>
+<p>&#x4F7F;&#x7528;&#x4E0A;&#x6B21;&#x8BB0;&#x4F4F;&#x7684;url</p>
+<pre><code class="lang-php">redirect()-&gt;restore();
+</code></pre>
+<p><strong>url&#x751F;&#x6210;</strong></p>
+<pre><code class="lang-php">Url::build(<span class="hljs-string">&apos;&#x6A21;&#x5757;/&#x63A7;&#x5236;&#x5668;/&#x64CD;&#x4F5C;&apos;</span>,[<span class="hljs-string">&apos;&#x53C2;&#x6570;&apos;</span>],[<span class="hljs-string">&apos;url&#x540E;&#x7F00;&apos;</span>],[<span class="hljs-string">&apos;&#x57DF;&#x540D;&apos;</span>]);
+
+<span class="hljs-comment">//&#x52A9;&#x624B;&#x51FD;&#x6570;</span>
+url(<span class="hljs-string">&apos;&#x6A21;&#x5757;/&#x63A7;&#x5236;&#x5668;/&#x64CD;&#x4F5C;&apos;</span>,[<span class="hljs-string">&apos;&#x53C2;&#x6570;&apos;</span>],[<span class="hljs-string">&apos;url&#x540E;&#x7F00;&apos;</span>],[<span class="hljs-string">&apos;&#x57DF;&#x540D;&apos;</span>]);
+</code></pre>
+<p>&#x4F8B;&#x5B50;</p>
+<pre><code class="lang-php"><span class="hljs-keyword">echo</span> Url::build(<span class="hljs-string">&apos;index/index/index&apos;</span>,[<span class="hljs-string">&apos;name&apos;</span> =&gt; <span class="hljs-string">&apos;tao&apos;</span>], <span class="hljs-string">&apos;html&apos;</span>, <span class="hljs-keyword">true</span>);
+</code></pre>
 
                                 
                                 </section>
@@ -1114,7 +1417,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"thinkphp框架","level":"1.3.3","depth":2,"next":{"title":"命名空间","level":"1.3.4","depth":2,"path":"php/namespace.md","ref":"php/namespace.md","articles":[]},"previous":{"title":"大小写转化原理","level":"1.3.2","depth":2,"path":"php/lower-upper.md","ref":"php/lower-upper.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"php/think-menu.md","mtime":"2019-01-29T17:21:26.553Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T17:30:05.627Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"thinkphp框架","level":"1.3.3","depth":2,"next":{"title":"命名空间","level":"1.3.4","depth":2,"path":"php/namespace.md","ref":"php/namespace.md","articles":[]},"previous":{"title":"大小写转化原理","level":"1.3.2","depth":2,"path":"php/lower-upper.md","ref":"php/lower-upper.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"php/think-menu.md","mtime":"2019-02-13T16:13:51.763Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-13T16:15:20.704Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -282,6 +282,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.10" data-path="../php/route.html">
+            
+                <a href="../php/route.html">
+            
+                    
+                    Route原理
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1033,9 +1046,9 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x4E3B;&#x670D;&#x52A1;&#x5668;">&#x4E3B;&#x670D;&#x52A1;&#x5668;</h1>
+                                <h3 id="&#x4E3B;&#x670D;&#x52A1;&#x5668;">&#x4E3B;&#x670D;&#x52A1;&#x5668;</h3>
 <hr>
-<h3 id="&#x4FEE;&#x6539;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;">&#x4FEE;&#x6539;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</h3>
+<p><strong>&#x4FEE;&#x6539;&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</strong></p>
 <pre><code>#&#x5F00;&#x542F;&#x4E8C;&#x8FDB;&#x5236;&#x65E5;&#x5FD7;
 log-bin=mysql-bin    
 
@@ -1049,15 +1062,14 @@ binlog-ignore-db=mysql
 #&#x540C;&#x6B65;&#x7684;&#x6570;&#x636E;&#x5E93;
 binlog-do-db=dbname                    
 sercice mysql restart
-</code></pre><h3 id="&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6DFB;&#x52A0;slave&#x7528;&#x6237;">&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6DFB;&#x52A0;Slave&#x7528;&#x6237;</h3>
-<blockquote>
-<p>GRANT FILE,REPLICATION,SLAVE ON *.* TO &apos;slave_host&apos;@&apos;%&apos; IDENTIFIED BY &apos;123456&apos;;</p>
-<p>FLUSH PRIVILEGES</p>
-</blockquote>
-<p><img src="../assets/import.png" alt=""></p>
-<h1 id="&#x4ECE;&#x670D;&#x52A1;&#x5668;">&#x4ECE;&#x670D;&#x52A1;&#x5668;</h1>
+</code></pre><p><strong>&#x4E3B;&#x670D;&#x52A1;&#x5668;&#x6DFB;&#x52A0;Slave&#x7528;&#x6237;</strong></p>
+<pre><code>GRANT FILE,REPLICATION,SLAVE ON \*.\* TO &apos;slave\_host&apos;@&apos;%&apos; IDENTIFIED BY &apos;123456&apos;;
+
+FLUSH PRIVILEGES
+</code></pre><p><img src="../assets/import.png" alt=""></p>
+<h3 id="&#x4ECE;&#x670D;&#x52A1;&#x5668;">&#x4ECE;&#x670D;&#x52A1;&#x5668;</h3>
 <hr>
-<h3 id="&#x4FEE;&#x6539;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;">&#x4FEE;&#x6539;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</h3>
+<p><strong>&#x4FEE;&#x6539;&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x914D;&#x7F6E;</strong></p>
 <pre><code>log-bin=mysql-bin
 server-id=2
 
@@ -1078,7 +1090,7 @@ replicate_do_table
 log-slave-updates
 slave-skip-errors=all
 slave-net-timeout=60
-</code></pre><h3 id="&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;sql">&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;SQL</h3>
+</code></pre><p><strong>&#x4ECE;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;SQL</strong></p>
 <pre><code>change master to master_host=&apos;101.132.182.191&apos; , 
 master_user=&apos;test&apos; , 
 master_password=&apos;test&apos; ,
@@ -1089,18 +1101,13 @@ master_log_file=&apos;AliYun-bin.000003&apos; ,
 //&#x4E0A;&#x9762;&#x8BB0;&#x5F55;&#x7684;position&#x503C;                
 master_log_pos=1402,                                
 master_port=8765;
-</code></pre><h3 id="&#x542F;&#x52A8;&#x4ECE;&#x670D;&#x52A1;&#x5668;">&#x542F;&#x52A8;&#x4ECE;&#x670D;&#x52A1;&#x5668;</h3>
-<p>#&#x542F;&#x52A8;</p>
-<blockquote>
-<p>start slave</p>
-</blockquote>
-<p>#&#x505C;&#x6B62;</p>
-<blockquote>
-<p>stop slave</p>
-</blockquote>
-<h3 id="&#x9A8C;&#x8BC1;&#x4ECE;&#x670D;&#x52A1;&#x5668;">&#x9A8C;&#x8BC1;&#x4ECE;&#x670D;&#x52A1;&#x5668;</h3>
-<p>show slave status\G;</p>
-<table>
+</code></pre><p><strong>&#x542F;&#x52A8;&#x4ECE;&#x670D;&#x52A1;&#x5668;</strong></p>
+<pre><code>start slave
+</code></pre><p><strong>&#x505C;&#x6B62;&#x4ECE;&#x670D;&#x52A1;&#x5668;</strong></p>
+<pre><code>stop slave
+</code></pre><p><strong>&#x9A8C;&#x8BC1;&#x4ECE;&#x670D;&#x52A1;&#x5668;</strong></p>
+<pre><code>show slave status\G;
+</code></pre><table>
 <thead>
 <tr>
 <th style="text-align:left">KEY</th>
@@ -1122,7 +1129,7 @@ master_port=8765;
 </tr>
 </tbody>
 </table>
-<p>#Slave_IO_Running&#x5FC5;&#x987B;&#x4E3A;YES<br>#Slave_SQL_Running&#x5FC5;&#x987B;&#x4E3A;YES<br>#&#x5728;&#x4E3B;&#x5E93;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5728;&#x4ECE;&#x5E93;&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x4E3A;ok&#x3002;</p>
+<p><code>Slave\_IO\_Running</code>&#x5FC5;&#x987B;&#x4E3A;YES<br><code>Slave\_SQL\_Running</code>&#x5FC5;&#x987B;&#x4E3A;YES<br>&#x5728;&#x4E3B;&#x5E93;&#x4E0A;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5728;&#x4ECE;&#x5E93;&#x67E5;&#x770B;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x4E3A;ok</p>
 
                                 
                                 </section>
@@ -1166,7 +1173,7 @@ master_port=8765;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"主从服务搭建和配置","level":"1.2.1","depth":2,"next":{"title":"sql注入攻击","level":"1.2.2","depth":2,"path":"mysql/inject.md","ref":"mysql/inject.md","articles":[]},"previous":{"title":"mysql","level":"1.2","depth":1,"path":"mysql/README.md","ref":"mysql/README.md","articles":[{"title":"主从服务搭建和配置","level":"1.2.1","depth":2,"path":"mysql/master-slave.md","ref":"mysql/master-slave.md","articles":[]},{"title":"sql注入攻击","level":"1.2.2","depth":2,"path":"mysql/inject.md","ref":"mysql/inject.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"mysql/master-slave.md","mtime":"2019-01-11T03:40:13.438Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-01-29T17:30:05.627Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"主从服务搭建和配置","level":"1.2.1","depth":2,"next":{"title":"sql注入攻击","level":"1.2.2","depth":2,"path":"mysql/inject.md","ref":"mysql/inject.md","articles":[]},"previous":{"title":"mysql","level":"1.2","depth":1,"path":"mysql/README.md","ref":"mysql/README.md","articles":[{"title":"主从服务搭建和配置","level":"1.2.1","depth":2,"path":"mysql/master-slave.md","ref":"mysql/master-slave.md","articles":[]},{"title":"sql注入攻击","level":"1.2.2","depth":2,"path":"mysql/inject.md","ref":"mysql/inject.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"mysql/master-slave.md","mtime":"2019-02-03T11:13:32.162Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-02-13T16:15:20.704Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
