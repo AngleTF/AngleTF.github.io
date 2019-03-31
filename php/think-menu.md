@@ -61,29 +61,6 @@ return view('admin@member/edit',['think' => 'php'])
 
 不带任何参数 自动定位当前模块 **view/类名/操作.html** 的模板文件, 以上模板路径是 ** admin/view/member/edit.html **, 并且将模板对应的think变量替换成php
 
-### 模型
-
-实例化模型之前先要将 ** 账户/密码/库名 ** 填入配置文件的 database.php 文件
-
-实例化模型调用
-
-```php
-$p = new Person();
-$p->getUserInfo();
-```
-
-静态方式调用
-
-```php
-Person::getUserInfo();
-```
-
-助手函数调用
-
-```php
-model('Person')->getUserInfo();
-```
-
 ### 配置
 
 **模块优先级**  
@@ -409,7 +386,7 @@ public function _empty(){
 ```php
 class Error
 {
-    public function index(){
+    public function _empty(){
         return "空控制器";
     }
 }
@@ -428,6 +405,7 @@ protected $beforeActionList = [
 
 
 **重定向 / 跳转**
+
 系统的\think\Controller类内置了两个跳转方法success和error，用于页面跳转提示
 ```php
 $this->success('新增成功', 'User/list', [], 3, []);
@@ -467,7 +445,593 @@ Url::build('模块/控制器/操作',['参数'],['url后缀'],['域名']);
 //助手函数
 url('模块/控制器/操作',['参数'],['url后缀'],['域名']);
 ```
+
 例子
 ```php
 echo Url::build('index/index/index',['name' => 'tao'], 'html', true);
 ```
+
+### 请求
+
+**实例化Request**
+```php
+//依赖注入方式, 使用注入需要 `use think\Request`
+public function __construct(Request $request)
+{
+	$this->request = $request;
+}
+
+
+//继承think\Controller后直接使用
+public function index()
+{
+	return $this->request->param('name');
+}
+
+//Facade调用
+public function index()
+{
+	return think\facade\Request::param('name');
+} 
+
+
+//助手函数
+public function index()
+{
+    return request()->param('name');
+}
+
+```
+
+
+
+**请求信息获取的方法**
+
+|方法|含义|
+|---|---|
+|host	|当前访问域名或者IP|
+|scheme	|当前访问协议|
+|port	|当前访问的端口|
+|remotePort	|当前请求的REMOTE_PORT|
+|protocol	|当前请求的SERVER_PROTOCOL|
+|contentType	|当前请求的CONTENT_TYPE|
+|domain	|当前包含协议的域名|
+|subDomain	|当前访问的子域名|
+|panDomain	|当前访问的泛域名|
+|rootDomain	|当前访问的根域名（V5.1.6+）|
+|url	|当前完整URL|
+|baseUrl	|当前URL（不含QUERY_STRING）|
+|query	|当前请求的QUERY_STRING参数|
+|baseFile	|当前执行的文件|
+|root	|URL访问根地址|
+|rootUrl	|URL访问根目录|
+|pathinfo	|当前请求URL的pathinfo信息（含URL后缀）|
+|path	|请求URL的pathinfo信息(不含URL后缀)|
+|ext	|当前URL的访问后缀|
+|time	|获取当前请求的时间|
+|type	|当前请求的资源类型|
+|method	|当前请求类型|
+
+
+**请求变量获取的方法**
+
+|方法|含义|
+|---|---|
+|param	|获取当前请求的变量 包含 PUT/GET/POST/FEIL/SESSION/ROUTE...|
+|get	|获取 $_GET 变量|
+|post	|获取 $_POST 变量|
+|put	|获取 PUT 变量|
+|delete	|获取 DELETE 变量|
+|session|	获取 $_SESSION 变量|
+|cookie	|获取 $_COOKIE 变量|
+|request	|获取 $_REQUEST 变量|
+|server	|获取 $_SERVER 变量|
+|env	|获取 $_ENV 变量|
+|route	|获取 路由（包括PATHINFO） 变量|
+|file	|获取 $_FILES 变量|
+
+
+**判断请求的类型**
+
+|方法|含义|
+|---|---|
+|获取当前请求类型|	method|
+|判断是否GET请求|	isGet|
+|判断是否POST请求|	isPost|
+|判断是否PUT请求|	isPut|
+|判断是否DELETE请求|	isDelete|
+|判断是否AJAX请求|	isAjax|
+|判断是否PJAX请求|	isPjax|
+|判断是否手机访问|	isMobile|
+|判断是否HEAD请求|	isHead|
+|判断是否PATCH请求|	isPatch|
+|判断是否OPTIONS请求|	isOptions|
+|判断是否为CLI执行|	isCli|
+|判断是否为CGI模式|	isCgi|
+
+**检测变量**
+```php
+Request::has('id','get');
+```
+变量检测可以支持所有支持的系统变量, 包括get/post/put/request/cookie/server/session/env/file
+
+**请求头信息**
+```php
+Request::header('user-agent');
+```
+
+### 验证器
+
+**定义验证器**
+```php
+namespace app\index\validate;
+
+use think\Validate;
+
+class User extends Validate
+{
+    protected $rule =   [
+        'name'  => 'require|max:25',
+        'age'   => 'number|between:1,120',
+        'email' => 'email',    
+    ];
+    
+    protected $message  =   [
+        'name.require' => '名称必须',
+        'name.max'     => '名称最多不能超过25个字符',
+        'age.number'   => '年龄必须是数字',
+        'age.between'  => '年龄只能在1-120之间',
+        'email'        => '邮箱格式错误',    
+    ];
+	
+	protected $scene = [
+        'edit'  =>  ['name','age'],
+    ];
+    
+}
+```
+我们定义一个\app\index\validate\User验证器类用于User的验证
+rule属性是验证的规则
+message是验证错误的提示
+scene是验证场景, 如上是 edit 场景, 需要验证两个参数 (name 和 age)
+
+**快速生成验证器**
+```
+php think make:validate index/User
+```
+
+**实例化验证器使用**
+```php
+namespace app\index\controller;
+
+use think\Controller;
+
+class Index extends Controller
+{
+    public function index()
+    {
+        $data = [
+            'name'  => 'thinkphp',
+            'email' => 'thinkphp@qq.com',
+        ];
+
+        $validate = new \app\index\validate\User;
+
+        if (!$validate->check($data)) {
+            dump($validate->getError());
+        }
+		
+		/*
+		如果使用场景
+		if (!$validate->scene('edit')->check($data)) {
+            dump($validate->getError());
+        }
+		*/
+    }
+}
+```
+
+**控制器中使用验证器**
+```php
+namespace app\index\controller;
+
+use think\Controller;
+
+class Index extends Controller
+{
+    public function index()
+    {
+        $result = $this->validate(
+            [
+                'name'  => 'thinkphp',
+                'email' => 'thinkphp@qq.com',
+            ],
+            'app\index\validate\User');
+
+		/*
+		如果使用场景
+		$result = $this->validate(
+            [
+                'name'  => 'thinkphp',
+                'email' => 'thinkphp@qq.com',
+            ],
+            'app\index\validate\User.edit');
+		
+		*/
+			
+			
+        if (true !== $result) {
+            // 验证失败 输出错误信息
+            dump($result);
+        }
+    }
+}
+```
+
+
+### 响应
+
+```php
+<?php
+namespace app\index\controller;
+
+class Index
+{
+    public function hello($name='thinkphp')
+    {
+        return 'Hello,' . $name . '!';
+    }
+}
+```
+控制器返回数据后默认输出 `Html` 格式, 可以通过修改 `default_return_type`
+```php
+// 默认输出类型
+'default_return_type'    => 'json',
+```
+
+**快捷输出方法**
+```php
+<?php
+namespace app\index\controller;
+
+class Index
+{
+    public function hello()
+    {
+        $data = ['name' => 'thinkphp', 'status' => '1'];
+        return json($data);
+    }
+}
+```
+
+|输出类型		|快捷方法	|对应Response类
+|---|---|
+|HTML输出		|response	|\think\Response
+|渲染模板输出	|view		|\think\response\View
+|JSON输出		|json		|\think\response\Json
+|JSONP输出		|jsonp		|\think\response\Jsonp
+|XML输出		|xml		|\think\response\Xml
+|页面重定向		|redirect	|\think\response\Redirect
+|附件下载（V5.1.21+）	|download	|\think\response\Download
+
+### facade
+门面为容器中的类提供了一个静态调用接口
+**common中的FacadeTest类**
+```php
+namespace app\common;
+
+class FacadeTest
+{
+    public function say(){
+        return "hello";
+    }
+}
+```
+
+**facade目录创建FacadeTest类的映射**
+```php
+namespace app\facade;
+
+use think\facade;
+
+class Test extends facade
+{
+    protected static function getFacadeClass()
+    {
+        return 'app\common\FacadeTest';
+    }
+}
+```
+1. 需要继承 think\Facade类
+2. 需要实现 getFacadeClass 方法
+
+### DB类
+
+**静态Db连接**
+先要将 ** 账户/密码/库名 ** 填入配置文件的 database.php 文件
+
+**动态Db连接**
+```php
+
+    public function dbConnect()
+    {
+
+        $config = [
+            // 数据库类型
+            'type' => 'mysql',
+            // 服务器地址
+            'hostname' => '127.0.0.1',
+            // 数据库名
+            'database' => 'backstage',
+            // 用户名
+            'username' => 'root',
+            // 密码
+            'password' => 'mysql',
+            // 端口
+            'hostport' => '3307',
+        ];
+
+        $link = Db::connect($config);
+
+        dump($link->table('user')->select());
+    }
+
+
+```
+
+**Db类, 预处理方式**
+```
+$res = Db::query("select * from book_user where id = ?", [ 1 ]);
+```
+
+### 模型
+
+**生成模型文件**
+```
+php think make:model 模块名/模型名
+```
+
+**模型定义**
+```php
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+class User extends Model
+{
+	protected $pk = 'uid';		//定义主键
+	protected $table = 'user'	//表名
+	protected $visible = ['id'] //显示字段
+	protected $hidden = ['id']  //隐藏字段
+}
+```
+
+**实例化模型调用**
+
+```php
+$p = new Person();
+$p->getUserInfo();
+```
+
+**静态方式模型调用**
+
+```php
+Person::getUserInfo();
+```
+
+**助手函数模型调用**
+
+```php
+model('Person')->getUserInfo();
+```
+
+**新增多个/一个**
+```
+$user = new User;
+$user->save([
+    'name'  =>  'thinkphp',
+    'email' =>  'thinkphp@qq.com'
+]);
+
+
+$user = new User;
+$list = [
+    ['name'=>'thinkphp','email'=>'thinkphp@qq.com'],
+    ['name'=>'onethink','email'=>'onethink@qq.com']
+];
+$user->saveAll($list);
+
+//save方法返回影响的记录数
+```
+
+**更新多个/一个**
+```
+$stu = new Student();
+$stu->save(['name' => 'tao'], ['id' => 1]);
+
+
+//当数据中存在主键的时候会认为是更新操作
+$user = new User;
+$list = [
+    ['id'=>1, 'name'=>'thinkphp', 'email'=>'thinkphp@qq.com'],
+    ['id'=>2, 'name'=>'onethink', 'email'=>'onethink@qq.com'],
+];
+$user->saveAll($list, false);
+```
+
+**删除多个/一个**
+```php
+//根据主键删除
+User::destroy(1);
+// 支持批量删除多个数据
+User::destroy('1,2,3');
+
+//条件删除
+User::where('id','>',10)->delete();
+```
+
+**获取器**
+
+获取器模型方法命名, FieldName为数据表字段的驼峰转换
+> getFieldNameAttr
+
+例子
+```
+<?php
+class User extends Model 
+{
+    public function getStatusAttr($value)
+    {
+        $status = [-1=>'删除',0=>'禁用',1=>'正常',2=>'待审核'];
+        return $status[$value];
+    }
+}
+```
+我取出某条User数据时, 本来status在数据库中是 int类型, 但是经过的获取器, 拿到的数据, 经过上面的针对status的过滤, 拿到了字符类型
+
+
+**修改器**
+
+修改器模型方法命名, FieldName为数据表字段的驼峰转换
+> setFieldNameAttr
+
+例子
+```
+<?php
+class User extends Model 
+{
+    public function setNameAttr($value)
+    {
+        return strtolower($value);
+    }
+}
+```
+我设置某条User数据时, 将Name的值进行小写后在插入数据库
+
+**类型转换**
+
+> 支持给字段设置类型自动转换，会在写入和读取的时候自动进行类型转换处理
+
+```php
+<?php
+class User extends Model 
+{
+    protected $type = [
+        'status'    =>  'integer',
+        'score'     =>  'float',
+        'birthday'  =>  'datetime',
+        'info'      =>  'array',
+    ];
+}
+```
+
+|类型|简介|
+|---|---|
+|integer|设置为integer（整型）后，该字段写入和输出的时候都会自动转换为整型。|
+|float|该字段的值写入和输出的时候自动转换为浮点型。|
+|boolean|该字段的值写入和输出的时候自动转换为布尔型。|
+|array|如果设置为强制转换为array类型，系统会自动把数组编码为json格式字符串写入数据库，取出来的时候会自动解码。|
+|object|该字段的值在写入的时候会自动编码为json字符串，输出的时候会自动转换为stdclass对象。|
+|serialize|指定为序列化类型的话，数据会自动序列化写入，并且在读取的时候自动反序列化。|
+|json|指定为json类型的话，数据会自动json_encode写入，并且在读取的时候自动json_decode处理。|
+|timestamp|指定为时间戳字段类型的话，该字段的值在写入时候会自动使用strtotime生成对应的时间戳，输出的时候会自动转换为dateFormat属性定义的时间字符串格式，默认的格式为Y-m-d H:i:s|
+
+**自动写入时间搓**
+
+修改数据库配置
+```
+// 开启自动写入时间戳字段
+'auto_timestamp' => true,
+```
+
+或者在模型里单独开启
+```php
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+class User extends Model
+{
+    protected $autoWriteTimestamp = true;
+}
+```
+
+一旦配置开启的话，会自动写入create_time和update_time两个字段的值，默认为整型（int），如果你的时间字段不是int类型的话，可以直接使用：
+
+```
+// 开启自动写入时间戳字段
+'auto_timestamp' => 'datetime'
+```
+
+系统创建新数据后会自动插入 create_time 字段, 数据修改后会自动插入 update_time
+
+修改 修改/插入字段
+```php
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+class User extends Model 
+{
+    // 定义时间戳字段名
+    protected $createTime = 'create_at';
+    protected $updateTime = 'update_at';
+}
+```
+
+如果你只需要使用create_time字段而不需要自动写入update_time
+```php
+class User extends Model 
+{
+    // 关闭自动写入update_time字段
+    protected $updateTime = false;
+}
+```
+
+**查询范围**
+
+例子
+```php
+<?php
+namespace app\index\model;
+
+use think\Model;
+
+class User extends Model
+{
+
+    public function scopeThinkphp($query)
+    {
+        $query->where('name','thinkphp')->field('id,name');
+    }
+	
+	
+	//方法名 按照 scope + 自定义名称进行拼接
+    public function scopeAge($query)
+    {
+        $query->where('age','>',20)->limit(10);
+    }    
+    
+}
+```
+
+控制器中使用, scope除了第一个参数, 其他都会传入 模型的scope自定义方法中, 第二个参数用来接收
+```php
+// 查找name为thinkphp的用户
+User::scope('thinkphp')->find();
+// 查找年龄大于20的10个用户
+User::scope('age')->select();
+// 查找name为thinkphp的用户并且年龄大于20的10个用户
+User::scope('thinkphp,age')->select();
+```
+
+
+**模型输出**
+
+|||
+|---|---|
+|$user->toArray()|数组|
+|$user->toJson()|json字符串|
