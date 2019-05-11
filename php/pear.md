@@ -49,3 +49,36 @@ include_path=".;D:\WMAP\php-5.6.32\pear"
 
 直接`双击php目录下的go-pear.bat`
 
+### 升级pear
+```
+pear upgrade-all
+```
+这条命令将会升级pear本身和所有的pear包
+
+```
+pear upgrade packagename
+```
+升级某个包
+
+### 列出下载安装的包
+```
+pear list
+```
+
+### 删除已经安装的pear包
+```
+pear un packagename
+```
+
+### 获取pear的远程库的包列表
+```
+pear remote-list
+```
+
+### 列出可升级的包
+```
+pear list-upgrades
+```
+
+
+
