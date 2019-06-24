@@ -1,0 +1,14 @@
+{
+    "title" : "note",
+    "description":"我的笔记",
+    "author":"lifeng tao",
+    "plugins": [
+                "expandable-chapters-small",
+                "fontsettings",
+                "sharing",
+                "lunr",
+                "search",
+                "highlight",
+                "livereload"
+                ]
+}
