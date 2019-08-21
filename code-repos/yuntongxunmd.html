@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>docker · note</title>
+        <title>云通讯短信封装类 · note</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="install.html" />
+    <link rel="next" href="../docker/" />
     
     
-    <link rel="prev" href="../code-repos/yuntongxunmd.html" />
+    <link rel="prev" href="sql-backup.html" />
     
 
     </head>
@@ -810,9 +810,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11" data-path="../code-repos/">
+        <li class="chapter " data-level="1.11" data-path="./">
             
-                <a href="../code-repos/">
+                <a href="./">
             
                     
                     code-repository
@@ -824,9 +824,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.11.1" data-path="../code-repos/tb-magnifying.html">
+        <li class="chapter " data-level="1.11.1" data-path="tb-magnifying.html">
             
-                <a href="../code-repos/tb-magnifying.html">
+                <a href="tb-magnifying.html">
             
                     
                     淘宝放大镜
@@ -837,9 +837,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.2" data-path="../code-repos/lnmp-package.html">
+        <li class="chapter " data-level="1.11.2" data-path="lnmp-package.html">
             
-                <a href="../code-repos/lnmp-package.html">
+                <a href="lnmp-package.html">
             
                     
                     lnmp一键安装脚本
@@ -850,9 +850,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.3" data-path="../code-repos/mysql-cnf.html">
+        <li class="chapter " data-level="1.11.3" data-path="mysql-cnf.html">
             
-                <a href="../code-repos/mysql-cnf.html">
+                <a href="mysql-cnf.html">
             
                     
                     mysql配置文件
@@ -863,9 +863,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.4" data-path="../code-repos/sql-backup.html">
+        <li class="chapter " data-level="1.11.4" data-path="sql-backup.html">
             
-                <a href="../code-repos/sql-backup.html">
+                <a href="sql-backup.html">
             
                     
                     mysql备份shell脚本
@@ -876,9 +876,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.11.5" data-path="../code-repos/yuntongxunmd.html">
+        <li class="chapter active" data-level="1.11.5" data-path="yuntongxunmd.html">
             
-                <a href="../code-repos/yuntongxunmd.html">
+                <a href="yuntongxunmd.html">
             
                     
                     云通讯短信封装类
@@ -894,9 +894,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.12" data-path="./">
+        <li class="chapter " data-level="1.12" data-path="../docker/">
             
-                <a href="./">
+                <a href="../docker/">
             
                     
                     docker
@@ -908,9 +908,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.12.1" data-path="install.html">
+        <li class="chapter " data-level="1.12.1" data-path="../docker/install.html">
             
-                <a href="install.html">
+                <a href="../docker/install.html">
             
                     
                     1.0安装
@@ -921,9 +921,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="use.html">
+        <li class="chapter " data-level="1.12.2" data-path="../docker/use.html">
             
-                <a href="use.html">
+                <a href="../docker/use.html">
             
                     
                     1.1使用
@@ -1316,7 +1316,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >docker</a>
+        <a href=".." >云通讯短信封装类</a>
     </h1>
 </div>
 
@@ -1331,10 +1331,255 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <p><img src="../assets/1524627545.jpg" alt=""></p>
-<p>Docker &#x662F;&#x4E00;&#x4E2A;&#x5F00;&#x6E90;&#x7684;&#x5E94;&#x7528;&#x5BB9;&#x5668;&#x5F15;&#x64CE;&#xFF0C;&#x57FA;&#x4E8E; Go &#x8BED;&#x8A00; &#x5E76;&#x9075;&#x4ECE;Apache2.0&#x534F;&#x8BAE;&#x5F00;&#x6E90;&#x3002;</p>
-<p>Docker &#x53EF;&#x4EE5;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x6253;&#x5305;&#x4ED6;&#x4EEC;&#x7684;&#x5E94;&#x7528;&#x4EE5;&#x53CA;&#x4F9D;&#x8D56;&#x5305;&#x5230;&#x4E00;&#x4E2A;&#x8F7B;&#x91CF;&#x7EA7;&#x3001;&#x53EF;&#x79FB;&#x690D;&#x7684;&#x5BB9;&#x5668;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x5E03;&#x5230;&#x4EFB;&#x4F55;&#x6D41;&#x884C;&#x7684; Linux &#x673A;&#x5668;&#x4E0A;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x865A;&#x62DF;&#x5316;&#x3002;</p>
-<p>&#x5BB9;&#x5668;&#x662F;&#x5B8C;&#x5168;&#x4F7F;&#x7528;&#x6C99;&#x7BB1;&#x673A;&#x5236;&#xFF0C;&#x76F8;&#x4E92;&#x4E4B;&#x95F4;&#x4E0D;&#x4F1A;&#x6709;&#x4EFB;&#x4F55;&#x63A5;&#x53E3;&#xFF08;&#x7C7B;&#x4F3C; iPhone &#x7684; app&#xFF09;,&#x66F4;&#x91CD;&#x8981;&#x7684;&#x662F;&#x5BB9;&#x5668;&#x6027;&#x80FD;&#x5F00;&#x9500;&#x6781;&#x4F4E;&#x3002;</p>
+                                <h3 id="&#x4E91;&#x901A;&#x8BAF;&#x624B;&#x673A;&#x77ED;&#x4FE1;&#x901A;&#x77E5;&#x7C7B;">&#x4E91;&#x901A;&#x8BAF;&#x624B;&#x673A;&#x77ED;&#x4FE1;&#x901A;&#x77E5;&#x7C7B;</h3>
+<pre><code class="lang-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YunTongXun</span>
+</span>{
+    <span class="hljs-keyword">private</span> $accountSId = <span class="hljs-string">&apos;&apos;</span>;
+    <span class="hljs-keyword">private</span> $authToken = <span class="hljs-string">&apos;&apos;</span>;
+    <span class="hljs-keyword">private</span> $appId = <span class="hljs-string">&apos;&apos;</span>;
+    <span class="hljs-keyword">private</span> $templateId = <span class="hljs-number">1</span>;
+
+    <span class="hljs-comment">/**
+     * &#x66FF;&#x6362;&#x6A21;&#x677F;&#x7684;&#x6570;&#x636E;
+     * <span class="hljs-doctag">@var</span> array
+     */</span>
+    <span class="hljs-keyword">private</span> $templateReplaceData = [];
+
+    <span class="hljs-comment">/**
+     * &#x8BF7;&#x6C42;&#x5730;&#x5740;
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">private</span> $requestUrl = <span class="hljs-string">&quot;https://app.cloopen.com:8883/2013-12-26/Accounts/%s/SMS/TemplateSMS?sig=%s&quot;</span>;
+
+    <span class="hljs-comment">/**
+     * &#x624B;&#x673A;&#x53F7;&#x7801;
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">private</span> $phone;
+
+    <span class="hljs-comment">/**
+     * &#x8BF7;&#x6C42;&#x65F6;&#x95F4;&#x6233; &#x683C;&#x5F0F;&quot;yyyyMMddHHmmss&quot;
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">private</span> $nowTime;
+
+    <span class="hljs-comment">/**
+     * &#x9519;&#x8BEF;&#x4FE1;&#x606F;, &#x5982;&#x679C;&#x6210;&#x529F;&#x5219;&#x4E3A;null
+     * <span class="hljs-doctag">@var</span> string
+     */</span>
+    <span class="hljs-keyword">private</span> $error = <span class="hljs-keyword">null</span>;
+
+    <span class="hljs-comment">/**
+     * &#x9519;&#x8BEF;&#x4EE3;&#x7801;, &#x5982;&#x679C;&#x6210;&#x529F;&#x5219;&#x4E3A;0
+     * <span class="hljs-doctag">@var</span> int
+     */</span>
+    <span class="hljs-keyword">private</span> $errorCode = <span class="hljs-number">0</span>;
+
+    <span class="hljs-comment">/**
+     * YunTongXun constructor.
+     * <span class="hljs-doctag">@param</span> array $config [&apos;account_sid&apos; =&gt; &apos;&apos;, &apos;app_id&apos; =&gt; &apos;&apos;, &apos;auth_token&apos; =&gt; &apos;&apos;, &apos;template_id&apos; =&gt; &apos;&apos;, &apos;phone&apos; =&gt; &apos;&apos;]
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($config)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;nowTime = date(<span class="hljs-string">&apos;YmdHis&apos;</span>);
+        <span class="hljs-keyword">$this</span>-&gt;setPhone($config[<span class="hljs-string">&apos;phone&apos;</span>]);
+        <span class="hljs-keyword">$this</span>-&gt;setAccountSId($config[<span class="hljs-string">&apos;account_sid&apos;</span>]);
+        <span class="hljs-keyword">$this</span>-&gt;setAppId($config[<span class="hljs-string">&apos;app_id&apos;</span>]);
+        <span class="hljs-keyword">$this</span>-&gt;setAuthToken($config[<span class="hljs-string">&apos;auth_token&apos;</span>]);
+        <span class="hljs-keyword">$this</span>-&gt;setTemplateId($config[<span class="hljs-string">&apos;template_id&apos;</span>]);
+        <span class="hljs-keyword">$this</span>-&gt;initUri();
+    }
+
+    <span class="hljs-comment">/**
+     * &#x521D;&#x59CB;&#x5316;&#x8D44;&#x6E90;&#x5B9A;&#x4F4D;&#x7B26;
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">initUri</span><span class="hljs-params">()</span>
+    </span>{
+        $sig = strtoupper(md5(<span class="hljs-keyword">$this</span>-&gt;accountSId . <span class="hljs-keyword">$this</span>-&gt;authToken . <span class="hljs-keyword">$this</span>-&gt;nowTime));
+        <span class="hljs-keyword">$this</span>-&gt;requestUrl = sprintf(<span class="hljs-keyword">$this</span>-&gt;requestUrl, <span class="hljs-keyword">$this</span>-&gt;accountSId, $sig);
+    }
+
+    <span class="hljs-comment">/**
+     * &#x53D1;&#x9001;&#x77ED;&#x4FE1;
+     * <span class="hljs-doctag">@param</span> array $data
+     * <span class="hljs-doctag">@return</span> bool
+     * <span class="hljs-doctag">@throws</span> \Exception
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">send</span><span class="hljs-params">($data = null)</span>
+    </span>{
+        <span class="hljs-keyword">if</span> ($data !== <span class="hljs-keyword">null</span>) {
+            <span class="hljs-keyword">$this</span>-&gt;setTemplateData($data);
+        }
+
+        $authorization = base64_encode(<span class="hljs-keyword">$this</span>-&gt;accountSId . <span class="hljs-string">&apos;:&apos;</span> . <span class="hljs-keyword">$this</span>-&gt;nowTime);
+
+        $http_header = [
+            <span class="hljs-string">&apos;Accept&apos;</span> =&gt; <span class="hljs-string">&apos;application/json&apos;</span>,
+            <span class="hljs-string">&apos;Content-Type&apos;</span> =&gt; <span class="hljs-string">&apos;application/json;charset=utf-8&apos;</span>,
+            <span class="hljs-string">&apos;Authorization&apos;</span> =&gt; $authorization
+        ];
+
+        $http_body = [
+            <span class="hljs-string">&apos;to&apos;</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;phone,
+            <span class="hljs-string">&apos;appId&apos;</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;appId,
+            <span class="hljs-string">&apos;templateId&apos;</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;templateId,
+            <span class="hljs-string">&apos;datas&apos;</span> =&gt; <span class="hljs-keyword">$this</span>-&gt;templateReplaceData
+        ];
+
+        $str_json = json_encode($http_body);
+
+        <span class="hljs-comment">//&#x8FFD;&#x52A0;Content-Length</span>
+        $http_header[<span class="hljs-string">&apos;Content-Length&apos;</span>] = strlen($str_json);
+
+        <span class="hljs-keyword">$this</span>-&gt;mergeHttpHeader($http_header);
+
+        $ch = curl_init(<span class="hljs-keyword">$this</span>-&gt;requestUrl);
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $http_header);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $str_json);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, <span class="hljs-keyword">true</span>);
+        $result = curl_exec($ch);
+
+        $err_code = curl_errno($ch);
+        $http_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+
+        <span class="hljs-keyword">if</span> ($err_code != <span class="hljs-number">0</span> || $http_code &lt; <span class="hljs-number">200</span> || $http_code &gt;= <span class="hljs-number">300</span> || $result === <span class="hljs-keyword">false</span>) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \<span class="hljs-keyword">Exception</span>(<span class="hljs-string">&quot;http request error, 
+            url:{$this-&gt;requestUrl}, httpCode: {$http_code}, curlCode: {$err_code}, curlMsg:&quot;</span> . curl_error($ch));
+        }
+
+        curl_close($ch);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;parse($result);
+    }
+
+    <span class="hljs-comment">/**
+     * &#x6839;&#x636E;&#x89C4;&#x5219;&#x89E3;&#x6790;&#x8FD4;&#x56DE;&#x503C;, &#x5E76;&#x4E14;&#x8FD4;&#x56DE;&#x662F;&#x5426;&#x8BF7;&#x6C42;&#x6210;&#x529F;
+     * <span class="hljs-doctag">@param</span> $result
+     * <span class="hljs-doctag">@return</span> bool
+     * <span class="hljs-doctag">@throws</span> \Exception
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">parse</span><span class="hljs-params">($result)</span>
+    </span>{
+
+        $result_arr = json_decode($result, <span class="hljs-keyword">true</span>);
+
+        <span class="hljs-keyword">if</span> (!<span class="hljs-keyword">isset</span>($result_arr[<span class="hljs-string">&apos;statusCode&apos;</span>])) {
+            <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> \<span class="hljs-keyword">Exception</span>(<span class="hljs-string">&quot;&#x89E3;&#x6790;&#x54CD;&#x5E94;&#x5931;&#x8D25;, result: {$result}&quot;</span>);
+        }
+
+        <span class="hljs-keyword">if</span> ($result_arr[<span class="hljs-string">&apos;statusCode&apos;</span>] != <span class="hljs-string">&quot;000000&quot;</span>) {
+            <span class="hljs-keyword">$this</span>-&gt;errorCode = $result_arr[<span class="hljs-string">&apos;statusCode&apos;</span>];
+            <span class="hljs-keyword">$this</span>-&gt;error = <span class="hljs-keyword">isset</span>($result_arr[<span class="hljs-string">&apos;statusMsg&apos;</span>]) ? $result_arr[<span class="hljs-string">&apos;statusMsg&apos;</span>] : <span class="hljs-string">&quot;&#x9519;&#x8BEF;&quot;</span>;
+            <span class="hljs-keyword">return</span> <span class="hljs-keyword">false</span>;
+        }
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">true</span>;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mergeHttpHeader</span><span class="hljs-params">(&amp;$header)</span>
+    </span>{
+        $new_header = [];
+        <span class="hljs-keyword">foreach</span> ($header <span class="hljs-keyword">as</span> $k =&gt; $v) {
+            $new_header[] = <span class="hljs-string">&quot;{$k}: $v&quot;</span>;
+        }
+        $header = $new_header;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setPhone</span><span class="hljs-params">($phone)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;phone = $phone;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getPhone</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;phone;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setTemplateData</span><span class="hljs-params">($data)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;templateReplaceData = $data;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTemplateData</span><span class="hljs-params">($data)</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;templateReplaceData;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getErrorCode</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;errorCode;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getError</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;error;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAccountSId</span><span class="hljs-params">($account_id)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;accountSId = $account_id;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAccountSId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;accountSId;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAuthToken</span><span class="hljs-params">($authToken)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;authToken = $authToken;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAuthToken</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;authToken;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setAppId</span><span class="hljs-params">($appId)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;appId = $appId;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAppId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;appId;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setTemplateId</span><span class="hljs-params">($templateId)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;templateId = $templateId;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getTemplateId</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;templateId;
+    }
+}
+</code></pre>
+<h3 id="&#x4F7F;&#x7528;">&#x4F7F;&#x7528;</h3>
+<pre><code class="lang-php">$yun = <span class="hljs-keyword">new</span> YunTongXun([
+        <span class="hljs-string">&apos;phone&apos;</span> =&gt; <span class="hljs-string">&apos;123456789&apos;</span>,
+        <span class="hljs-string">&apos;account_sid&apos;</span> =&gt; <span class="hljs-string">&apos;111&apos;</span>,
+        <span class="hljs-string">&apos;app_id&apos;</span> =&gt; <span class="hljs-string">&apos;222&apos;</span>,
+        <span class="hljs-string">&apos;auth_token&apos;</span> =&gt; <span class="hljs-string">&apos;QWERTYUIOP&apos;</span>,
+        <span class="hljs-string">&apos;template_id&apos;</span> =&gt; <span class="hljs-number">1</span>,
+    ]);
+
+
+<span class="hljs-keyword">try</span> {
+
+    <span class="hljs-comment">//&#x53D1;&#x9001;&#x77ED;&#x4FE1;&#x901A;&#x77E5;</span>
+    <span class="hljs-keyword">if</span> ($yun-&gt;send([<span class="hljs-string">&apos;&#x6A21;&#x677F;&#x53D8;&#x91CF;1&apos;</span>, <span class="hljs-string">&apos;&#x6A21;&#x677F;&#x53D8;&#x91CF;2&apos;</span>])) {
+        <span class="hljs-keyword">echo</span> <span class="hljs-string">&apos;success&apos;</span>;
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">echo</span> $yun-&gt;getError();
+    }
+
+} <span class="hljs-keyword">catch</span> (\<span class="hljs-keyword">Exception</span> $e) {
+    <span class="hljs-keyword">echo</span> <span class="hljs-string">&quot;Exception:{$e-&gt;getMessage()}\n&quot;</span>;
+}
+</code></pre>
 
                                 
                                 </section>
@@ -1362,12 +1607,12 @@
 
             
                 
-                <a href="../code-repos/yuntongxunmd.html" class="navigation navigation-prev " aria-label="Previous page: 云通讯短信封装类">
+                <a href="sql-backup.html" class="navigation navigation-prev " aria-label="Previous page: mysql备份shell脚本">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="install.html" class="navigation navigation-next " aria-label="Next page: 1.0安装">
+                <a href="../docker/" class="navigation navigation-next " aria-label="Next page: docker">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1378,7 +1623,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"docker","level":"1.12","depth":1,"next":{"title":"1.0安装","level":"1.12.1","depth":2,"path":"docker/install.md","ref":"docker/install.md","articles":[]},"previous":{"title":"云通讯短信封装类","level":"1.11.5","depth":2,"path":"code-repos/yuntongxunmd.md","ref":"code-repos/yuntongxunmd.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"docker/README.md","mtime":"2019-01-29T17:29:50.877Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-21T18:33:21.251Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"云通讯短信封装类","level":"1.11.5","depth":2,"next":{"title":"docker","level":"1.12","depth":1,"path":"docker/README.md","ref":"docker/README.md","articles":[{"title":"1.0安装","level":"1.12.1","depth":2,"path":"docker/install.md","ref":"docker/install.md","articles":[]},{"title":"1.1使用","level":"1.12.2","depth":2,"path":"docker/use.md","ref":"docker/use.md","articles":[]}]},"previous":{"title":"mysql备份shell脚本","level":"1.11.4","depth":2,"path":"code-repos/sql-backup.md","ref":"code-repos/sql-backup.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters-small","fontsettings","sharing","lunr","search","highlight","livereload","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters-small":{},"fontsettings":{"family":"sans","size":2,"theme":"white"},"sharing":{"all":["facebook","google","twitter","weibo","instapaper"],"facebook":true,"google":false,"instapaper":false,"twitter":true,"vk":false,"weibo":false},"lunr":{"ignoreSpecialCharacters":false,"maxIndexSize":1000000},"search":{},"highlight":{},"livereload":{},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"lifeng tao","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"note","gitbook":"*","description":"我的笔记"},"file":{"path":"code-repos/yuntongxunmd.md","mtime":"2019-06-25T22:40:45.367Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-08-21T18:33:21.251Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
